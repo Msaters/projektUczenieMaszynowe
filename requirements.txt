@@ -2,4 +2,6 @@ pandas
 nltk 
 spacy
 faiss-cpu
-scikit-learn
+scikit-learnmatplotlib
+seaborn
+numpy
