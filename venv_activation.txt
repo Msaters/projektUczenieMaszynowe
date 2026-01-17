@@ -3,3 +3,7 @@ python3 -m venv .venv
 
 Activating venv:
 source .venv/bin/activate
+
+or
+
+.\.venv\Scripts\Activate
