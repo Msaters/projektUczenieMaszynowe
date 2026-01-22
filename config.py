@@ -2,3 +2,5 @@ RANDOM_STATE = 42
 EMBEDED_FILEPATH = "winemag-data-130k-v2-tfidf-svd.csv"
 CSV_FILEPATH = "winemag-data-130k-v2.csv"
 DIMENSIONS = 128
+DIMENSIONS = 128
+MIN_WORD_OCCURENCE = 6

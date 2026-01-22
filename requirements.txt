@@ -2,8 +2,10 @@ pandas
 nltk 
 spacy
 faiss-cpu
-scikit-learnmatplotlib
+scikit-learn
+matplotlib
 seaborn
 numpy
 sentence_transformers
 hf_xet
+humanize

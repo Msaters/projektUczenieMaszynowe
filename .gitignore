@@ -1,5 +1,6 @@
 .venv
 winemag-data-130k-v2-tfidf-svd.csv
 embeddings.csv
+embeddings.npy
 __pycache__/
 __pycache__
