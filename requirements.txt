@@ -5,3 +5,5 @@ faiss-cpu
 scikit-learnmatplotlib
 seaborn
 numpy
+sentence_transformers
+hf_xet
