@@ -2,6 +2,8 @@ pandas
 nltk 
 spacy
 faiss-cpu
-scikit-learnmatplotlib
+scikit-learn
+matplotlib
 seaborn
 numpy
+humanize
