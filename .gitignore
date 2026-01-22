@@ -4,3 +4,4 @@ embeddings.csv
 embeddings.npy
 __pycache__/
 __pycache__
+plots

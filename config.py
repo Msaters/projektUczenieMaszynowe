@@ -1,4 +1,5 @@
 RANDOM_STATE = 42
 EMBEDED_FILEPATH = "winemag-data-130k-v2-tfidf-svd.csv"
+SVD_EMBEDDING = "embeddings.npy"
 DIMENSIONS = 128
-MIN_WORD_OCCURENCE = 6
+MIN_WORD_OCCURENCE = 250
