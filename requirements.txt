@@ -9,3 +9,4 @@ numpy
 sentence_transformers
 hf_xet
 humanize
+openai
