@@ -5,3 +5,5 @@ embeddings.npy
 __pycache__/
 __pycache__
 plots
+private.py
+embeddings_tf_idf_bigrams.csv
