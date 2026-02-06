@@ -4,3 +4,6 @@ SVD_EMBEDDING = "embeddings.npy"
 CSV_FILEPATH = "winemag-data-130k-v2.csv"
 DIMENSIONS = 128
 MIN_WORD_OCCURENCE = 10
+
+
+# funkcja łącząca embedowania z danymi
