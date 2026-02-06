@@ -1,6 +1,34 @@
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 RANDOM_STATE = 42
-EMBEDED_FILEPATH = "winemag-data-130k-v2-tfidf-svd.csv"
-SVD_EMBEDDING = "embeddings.npy"
-CSV_FILEPATH = "winemag-data-130k-v2.csv"
+EMBEDED_FILEPATH_tfidf_svd_baseline =   os.path.join(BASE_DIR, "winemag-data-130k-v2-tfidf-svd.csv")
+EMBEDEDINGS_FILEPATH_Mini_LML6_v2 = os.path.join(BASE_DIR, "embeddings_all-MiniLM-L6-v2.npy")
+EMBEDEDINGS_FILEPATH_mpnet_base_v2 = os.path.join(BASE_DIR, "embeddings_all-mpnet-base-v2.npy")
+EMBEDEDINGS_FILEPATH_open_ai_api = os.path.join(BASE_DIR, "embeddings_open_ai_api.npy")
+EMBEDEDINGS_FILEPATH_tf_idf_bigrams = os.path.join(BASE_DIR, "embeddings_tf_idf_bigrams.npy")
+EMBEDEDINGS_FILEPATH_tf_idf_monograms = os.path.join(BASE_DIR, "embeddings_tf_idf_monograms.npy")
+CSV_FILEPATH_UNCHANGED_DATA = os.path.join(BASE_DIR, "winemag-data-130k-v2.csv")
+
+# Parameters for tfidf vectorizer
 DIMENSIONS = 128
 MIN_WORD_OCCURENCE = 10
+
+
+def load_embeddings_and_data(embeddings_filepath, csv_filepath, isFirstColumnIndex = True, check_length=True):
+    import numpy as np
+    import pandas as pd
+
+    embeddings = np.load(embeddings_filepath)
+    if isFirstColumnIndex:
+        data = pd.read_csv(csv_filepath, index_col=0)
+    else:
+        data = pd.read_csv(csv_filepath)
+    
+    if check_length:
+        if len(embeddings) != len(data):
+            raise ValueError("The number of embeddings does not match the number of data entries.")
+
+    combined_data = pd.concat([data, embeddings], axis=1)
+    return combined_data
