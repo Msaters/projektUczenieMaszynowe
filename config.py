@@ -3,13 +3,15 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 RANDOM_STATE = 42
-EMBEDED_FILEPATH_tfidf_svd_baseline =   os.path.join(BASE_DIR, "winemag-data-130k-v2-tfidf-svd.csv")
-EMBEDEDINGS_FILEPATH_Mini_LML6_v2 = os.path.join(BASE_DIR, "embeddings_all-MiniLM-L6-v2.npy")
-EMBEDEDINGS_FILEPATH_mpnet_base_v2 = os.path.join(BASE_DIR, "embeddings_all-mpnet-base-v2.npy")
-EMBEDEDINGS_FILEPATH_open_ai_api = os.path.join(BASE_DIR, "embeddings_open_ai_api.npy")
-EMBEDEDINGS_FILEPATH_tf_idf_bigrams = os.path.join(BASE_DIR, "embeddings_tf_idf_bigrams.npy")
-EMBEDEDINGS_FILEPATH_tf_idf_monograms = os.path.join(BASE_DIR, "embeddings_tf_idf_monograms.npy")
+EMBEDEDINGS_FILEPATH_Mini_LML6_v2 = os.path.join(BASE_DIR, "embedings", "embeddings_all-MiniLM-L6-v2.npy")
+EMBEDEDINGS_FILEPATH_mpnet_base_v2 = os.path.join(BASE_DIR, "embedings", "embeddings_all-mpnet-base-v2.npy")
+EMBEDEDINGS_FILEPATH_open_ai_api = os.path.join(BASE_DIR, "embedings", "embeddings_open_ai_api.npy")
+EMBEDEDINGS_FILEPATH_tf_idf_bigrams = os.path.join(BASE_DIR, "embedings", "embeddings_tf_idf_bigrams.npy")
+EMBEDEDINGS_FILEPATH_tf_idf_monograms = os.path.join(BASE_DIR, "embedings", "embeddings_tf_idf_monograms.npy")
+
 CSV_FILEPATH_UNCHANGED_DATA = os.path.join(BASE_DIR, "winemag-data-130k-v2.csv")
+
+FAIS_INDEX_FILEPATH = os.path.join(BASE_DIR, "Similarity_Wine_Search", "wine_search_index.index")
 
 # Parameters for tfidf vectorizer
 DIMENSIONS = 128
@@ -21,6 +23,7 @@ def load_embeddings_and_data(embeddings_filepath, csv_filepath, isFirstColumnInd
     import pandas as pd
 
     embeddings = np.load(embeddings_filepath)
+    embeddings_df = pd.DataFrame(embeddings)
     if isFirstColumnIndex:
         data = pd.read_csv(csv_filepath, index_col=0)
     else:
@@ -30,5 +33,5 @@ def load_embeddings_and_data(embeddings_filepath, csv_filepath, isFirstColumnInd
         if len(embeddings) != len(data):
             raise ValueError("The number of embeddings does not match the number of data entries.")
 
-    combined_data = pd.concat([data, embeddings], axis=1)
+    combined_data = pd.concat([data, embeddings_df], axis=1)
     return combined_data
