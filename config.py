@@ -10,7 +10,14 @@ EMBEDEDINGS_FILEPATH_tf_idf_bigrams = os.path.join(BASE_DIR, "embedings", "embed
 EMBEDEDINGS_FILEPATH_tf_idf_monograms = os.path.join(BASE_DIR, "embedings", "embeddings_tf_idf_monograms.npy")
 
 CSV_FILEPATH_UNCHANGED_DATA = os.path.join(BASE_DIR, "winemag-data-130k-v2.csv")
-CSV_FILEPATH_PREPROCESSED_DATA = os.path.join(BASE_DIR, "winemag-data-130k-v2-preprocessed.csv")
+# Output after data_exploration preprocessing (drops + vintage extraction)
+CSV_FILEPATH_EXPLORATION_PREPROCESSED_DATA = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-exploration-preprocessed.csv"
+)
+# Final, model-ready dataset after encoding in data_engineering
+CSV_FILEPATH_MODEL_READY_DATA = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-model-ready.csv"
+)
 
 FAIS_INDEX_FILEPATH = os.path.join(BASE_DIR, "Similarity_Wine_Search", "wine_search_index.index")
 
