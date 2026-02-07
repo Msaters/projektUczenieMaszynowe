@@ -1,22 +1,45 @@
 # How to run this project:
 
-## Creating venv:
-`python3 -m venv .venv`
-
-## Activating venv:
+## Install Git LFS for embeddings
 ### On Linux
-`source .venv/bin/activate`
+```bash
+sudo apt update
+sudo apt install git-lfs
+git lfs install
+git lfs pull
+```
+
+## Create venv:
+```bash
+python3 -m venv .venv
+```
+
+## Activate venv:
+### On Linux
+```bash
+source .venv/bin/activate
+```
 ### On Windows
-`.\.venv\Scripts\Activate`
+```bash
+.\.venv\Scripts\Activate
+```
 
 ## Install ipykernel
-`pip install ipykernel`
+```bash
+pip install ipykernel
+```
 
 ## Register kernel
-`python -m ipykernel install --user --name ml-project`
+```bash
+python -m ipykernel install --user --name ml-project
+```
 
 ## Install python libraries
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
-## Install ??? TODO
-`python -m spacy download en_core_web_sm`
+<!-- ## Install ??? TODO
+```bash
+python -m spacy download en_core_web_sm
+``` -->
