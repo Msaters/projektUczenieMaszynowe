@@ -30,6 +30,11 @@ CSV_FILEPATH_MODEL_READY_DATA_PRICE_FILLED = os.path.join(
 # Backward-compatible alias (points)
 CSV_FILEPATH_MODEL_READY_DATA = CSV_FILEPATH_MODEL_READY_DATA_POINTS
 
+# After full preprocess
+CSV_FILEPATH_FULLY_PREPROCESSED = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-fully-preprocessed.csv"
+)
+
 FAIS_INDEX_FILEPATH = os.path.join(BASE_DIR, "Similarity_Wine_Search", "wine_search_index.index")
 
 CSV_FILEPATH_REALABLE_DATA_FOR_PRICE_REGRESSION_NOT_SCALED = os.path.join(BASE_DIR, "data", "df_without_missing_price_and_vintage_for_price_regression_not_scaled.csv")

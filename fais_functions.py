@@ -30,11 +30,11 @@ def find_most_distant_items(index, query_vector: np.ndarray, k: int):
 
 def get_wines_by_indices(indices: np.ndarray, df: pd.DataFrame):
     wines_reviews_df = df.iloc[indices.flatten()]
-    descriptions = wines_reviews_df['description'].tolist()
-    print(descriptions)
-    return wines_reviews_df
+    descriptions_list = wines_reviews_df['description'].tolist()
+    return wines_reviews_df, descriptions_list
 
-def prepare_weighted_features(df, weight_dict=None, default_weight=5.0):
+def prepare_weighted_features(df, weight_dict=None, default_weight=4.0):
+    df.columns = df.columns.astype(str)
     all_cols = df.columns.tolist()
     embedding_cols = [c for c in all_cols if str(c).isdigit() or str(c).startswith('svd_')]
     feature_cols = [c for c in all_cols if c not in embedding_cols]
@@ -47,7 +47,11 @@ def prepare_weighted_features(df, weight_dict=None, default_weight=5.0):
             if col in df_scaled.columns:
                 df_scaled[col] *= w
     else:
-        df_scaled[feature_cols] *= default_weight
+        for col in feature_cols:
+            df_scaled[col] *= default_weight
+            if col == 'price':
+                df_scaled[col] *= 2.5
+        
 
     return df_scaled.astype('float32')
 
@@ -73,6 +77,12 @@ def build_faiss_index_from_df_nums(df_nums: pd.DataFrame):
 
 def append_embedding_to_file(filepath, new_embedding):
     new_vector = np.array(new_embedding).reshape(1, -1)
+    
+    dir_name = os.path.dirname(filepath)
+    if dir_name and not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+        print(f"Utworzono brakujący folder: {dir_name}")
+
 
     if os.path.exists(filepath):
         try:
