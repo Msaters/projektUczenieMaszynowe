@@ -7,25 +7,12 @@ import sklearn.metrics as skm
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-from config import MIN_WORD_OCCURENCE, SVD_EMBEDDING
+from config import *
 
 
-def main() -> None:
-    target_col = "points"
+def all_results(embeddings_filepath, csv_filepath, target_col="points",) -> None:
 
-    points_df = pd.read_csv("winemag-data-130k-v2.csv", usecols=[target_col])
-    embeddings = np.load(SVD_EMBEDDING)
-
-    if len(points_df) != len(embeddings):
-        raise ValueError(
-            f"Row count mismatch: points={len(points_df)} embeddings={len(embeddings)}"
-        )
-
-    embeddings_df = pd.DataFrame(
-        embeddings, columns=[f"emb_{idx}" for idx in range(embeddings.shape[1])]
-    )
-    df = pd.concat([points_df.reset_index(drop=True), embeddings_df], axis=1)
-
+    df = load_embeddings_and_data(embeddings_filepath, csv_filepath)
     nan_stats = df.isnull().mean(axis=0)
     columns_to_drop = nan_stats.index[nan_stats > 0]
 
@@ -84,7 +71,7 @@ def main() -> None:
 
     plt.xticks(
         ticks=range(1, len(forced_points) + 1),
-        labels=forced_points,
+        labels=forced_points, # type: ignore
         rotation=90
     )
     plt.yticks(forced_points)
@@ -102,4 +89,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    all_results(EMBEDEDINGS_FILEPATH_tf_idf_monograms, CSV_FILEPATH_UNCHANGED_DATA)
