@@ -34,6 +34,8 @@ FAIS_INDEX_FILEPATH = os.path.join(BASE_DIR, "Similarity_Wine_Search", "wine_sea
 
 CSV_FILEPATH_REALABLE_DATA_FOR_PRICE_REGRESSION_NOT_SCALED = os.path.join(BASE_DIR, "data", "df_without_missing_price_and_vintage_for_price_regression_not_scaled.csv")
 CSV_FILEPATH_REALABLE_DATA_FOR_PRICE_REGRESSION_SCALED = os.path.join(BASE_DIR, "data", "df_without_missing_price_and_vintage_for_price_regression_scaled.csv")
+CSV_FILEPATH_REALABLE_DATA_FOR_PRICE_REGRESSION_TO_FILL = os.path.join(BASE_DIR, "data", "df_without_missing_price_and_vintage_for_price_regression_to_fill.csv")
+
 
 # Parameters for tfidf vectorizer
 DIMENSIONS = 128
