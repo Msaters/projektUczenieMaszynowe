@@ -10,13 +10,15 @@ from sklearn.model_selection import train_test_split
 from config import *
 
 
-def all_results(embeddings_filepath, csv_filepath, target_col="points", title_change="") -> None:
-
-    df = load_embeddings_and_data(embeddings_filepath, csv_filepath)
+def all_results(embeddings_filepath, csv_filepath, target_col="points", title_change="", doIUseEmbeddings = True):
+    if(doIUseEmbeddings):
+        df = load_embeddings_and_data(embeddings_filepath, csv_filepath)
+    else:
+        df = pd.read_csv(csv_filepath)
     nan_stats = df.isnull().mean(axis=0)
     columns_to_drop = nan_stats.index[nan_stats > 0]
 
-    train_df, test_df = train_test_split(df, test_size=0.2)
+    train_df, test_df = train_test_split(df, test_size=0.2, random_state=RANDOM_STATE)
 
     use_columns = train_df.select_dtypes(include="number").columns
     use_columns = use_columns.drop(target_col, errors="ignore")
@@ -86,6 +88,7 @@ def all_results(embeddings_filepath, csv_filepath, target_col="points", title_ch
     plot_path = os.path.join("plots", plot_filename)
     plt.savefig(plot_path, dpi=150)
     print(f"Saved plot to {plot_path}")
+
 
 
 if __name__ == "__main__":
