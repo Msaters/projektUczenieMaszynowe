@@ -21,6 +21,12 @@ CSV_FILEPATH_MODEL_READY_DATA_POINTS = os.path.join(
 CSV_FILEPATH_MODEL_READY_DATA_PRICE = os.path.join(
     BASE_DIR, "winemag-data-130k-v2-model-ready-price.csv"
 )
+CSV_FILEPATH_MODEL_READY_DATA_POINTS_FILLED = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-model-ready-with-missing.csv"
+)
+CSV_FILEPATH_MODEL_READY_DATA_PRICE_FILLED = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-model-ready-price-with-missing.csv"
+)
 # Backward-compatible alias (points)
 CSV_FILEPATH_MODEL_READY_DATA = CSV_FILEPATH_MODEL_READY_DATA_POINTS
 
