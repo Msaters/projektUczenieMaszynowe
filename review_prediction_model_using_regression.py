@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from config import *
 
 
-def all_results(embeddings_filepath, csv_filepath, target_col="points",) -> None:
+def all_results(embeddings_filepath, csv_filepath, target_col="points", title_change="") -> None:
 
     df = load_embeddings_and_data(embeddings_filepath, csv_filepath)
     nan_stats = df.isnull().mean(axis=0)
@@ -77,7 +77,7 @@ def all_results(embeddings_filepath, csv_filepath, target_col="points",) -> None
     plt.yticks(forced_points)
     plt.xlabel("Actual points")
     plt.ylabel("Predicted points")
-    plt.title("Predicted points distribution for each actual points value")
+    plt.title(f"Predicted points distribution for each actual points value {title_change}")
     plt.legend()
     plt.tight_layout()
 
