@@ -14,10 +14,15 @@ CSV_FILEPATH_UNCHANGED_DATA = os.path.join(BASE_DIR, "winemag-data-130k-v2.csv")
 CSV_FILEPATH_EXPLORATION_PREPROCESSED_DATA = os.path.join(
     BASE_DIR, "winemag-data-130k-v2-exploration-preprocessed.csv"
 )
-# Final, model-ready dataset after encoding in data_engineering
-CSV_FILEPATH_MODEL_READY_DATA = os.path.join(
+# Final, model-ready datasets after encoding in data_engineering
+CSV_FILEPATH_MODEL_READY_DATA_POINTS = os.path.join(
     BASE_DIR, "winemag-data-130k-v2-model-ready.csv"
 )
+CSV_FILEPATH_MODEL_READY_DATA_PRICE = os.path.join(
+    BASE_DIR, "winemag-data-130k-v2-model-ready-price.csv"
+)
+# Backward-compatible alias (points)
+CSV_FILEPATH_MODEL_READY_DATA = CSV_FILEPATH_MODEL_READY_DATA_POINTS
 
 FAIS_INDEX_FILEPATH = os.path.join(BASE_DIR, "Similarity_Wine_Search", "wine_search_index.index")
 
